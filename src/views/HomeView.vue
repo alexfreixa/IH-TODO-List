@@ -38,8 +38,9 @@ onMounted(() => {
 <template>
 	<main>
 		<h1>My personal Task List</h1>
+		<br>
 		<SingleTask v-for="task in tasks" :task="task"/>
-
+		<br>
 		<span>Total Tasks: {{ tasks.length }}</span>
 
 	</main>
