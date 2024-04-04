@@ -7,5 +7,11 @@ export const fetchAllTasks = async () => {
     throw new Error(error.message)
   }
 
-  return data
+  /*const tasks = data.map(task => ({
+    id: task.id,
+    title: task.title,
+    is_complete: task.is_complete
+  }));*/
+
+  return data;
 }
