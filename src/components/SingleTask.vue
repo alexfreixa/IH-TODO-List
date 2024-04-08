@@ -7,7 +7,7 @@ defineProps({
 </script>
 
 <template>
-  <div id="task-body" class="flex text-black bg-white">
+  <div id="item" class="flex text-black bg-white px-4 py-2 border-b border-black w-3/4">
     <div id="id">
       <span>#{{ task.id }} - </span>
     </div>

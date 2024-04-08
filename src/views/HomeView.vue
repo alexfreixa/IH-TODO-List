@@ -1,18 +1,17 @@
 <script setup>
-
-import { useTasksStore } from '@/stores/tasksStore';
-import { storeToRefs } from 'pinia';
-import { onMounted } from 'vue';
-import { ref } from 'vue';
+import { useTasksStore } from '@/stores/tasksStore'
+import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
+import { ref } from 'vue'
 
 //import SingleTask from '@/components/SingleTask.vue';
-import SingleTask from '../components/SingleTask.vue';
+import SingleTask from '../components/SingleTask.vue'
 
-const tasksStore = useTasksStore();
-const { tasks } = storeToRefs(tasksStore);
+const tasksStore = useTasksStore()
+const { tasks } = storeToRefs(tasksStore)
 
 onMounted(() => {
-	tasksStore.fetchTasks();
+  tasksStore.fetchTasks()
 })
 
 /*const taskList = ref([
@@ -32,19 +31,20 @@ onMounted(() => {
 		is_complete: true,
     },
 ]);*/
-
 </script>
 
 <template>
-	<main>
-		<h1>My personal Task List</h1>
-		<br>
-		<SingleTask v-for="task in tasks" :task="task"/>
-		<br>
-		<span>Total Tasks: {{ tasks.length }}</span>
-
-	</main>
+  <main class="w-full">
+    <br />
+	<div class="flex justify-center flex-col">
+    <h1 class="text-xl">My personal Task List</h1>
+    <br />
+    <div id="tasks-list">
+      <SingleTask v-for="task in tasks" :task="task" />
+    </div>
+</div>
+    <div class="text-center pt-5">Total Tasks: {{ tasks.length }}</div>
+  </main>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
