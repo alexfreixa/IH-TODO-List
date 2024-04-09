@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color:#2a206a;
+}
+
+input {
+  color: black;
+}
+
 #app {
   width: 100%;
   margin: 0 auto;
@@ -29,3 +37,5 @@
     padding: 0 2rem;
   }
 }
+
+

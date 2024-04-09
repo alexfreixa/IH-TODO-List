@@ -6,12 +6,18 @@ export const fetchAllTasks = async () => {
   if (error) {
     throw new Error(error.message)
   }
-
-  /*const tasks = data.map(task => ({
-    id: task.id,
-    title: task.title,
-    is_complete: task.is_complete
-  }));*/
-
   return data;
+}
+
+const TABLE_NAME = 'tasks';
+
+export const createTask = async (task) => {
+  const { error } = await supabase
+  .from(TABLE_NAME)
+  .insert(task)
+  if (error) {
+    throw new Error(error.message)
+  }
+
+  return true
 }

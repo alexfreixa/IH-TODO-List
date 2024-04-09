@@ -6,6 +6,7 @@ import { ref } from 'vue'
 
 //import SingleTask from '@/components/SingleTask.vue';
 import SingleTask from '../components/SingleTask.vue'
+import AddTask from '../components/AddTask.vue'
 
 const tasksStore = useTasksStore()
 const { tasks } = storeToRefs(tasksStore)
@@ -36,14 +37,16 @@ onMounted(() => {
 <template>
   <main class="w-full">
     <br />
-	<div class="flex justify-center flex-col">
-    <h1 class="text-xl">My personal Task List</h1>
-    <br />
-    <div id="tasks-list">
-      <SingleTask v-for="task in tasks" :task="task" />
+    <div class="flex justify-center flex-col">
+      <h1 class="text-xl m-auto">My personal Task List</h1>
+      <br />
+      <div id="tasks-list">
+        <SingleTask v-for="task in tasks" :task="task" />
+      </div>
     </div>
-</div>
     <div class="text-center pt-5">Total Tasks: {{ tasks.length }}</div>
+
+    <AddTask></AddTask>
   </main>
 </template>
 
