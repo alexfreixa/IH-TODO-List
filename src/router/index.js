@@ -20,6 +20,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: () => import('@/views/AboutView.vue')
+    },
+    {
+      path: '/edit/:taskId',
+      name: 'edit',
+      component: () => import('@/views/EditView.vue')
     }
   ]
 })

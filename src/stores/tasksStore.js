@@ -37,7 +37,6 @@ export const useTasksStore = defineStore('tasks', () => {
 
   async function checkTaskCompleted(taskId, isCompleted){
     try {
-      console.log("Now checking:" + taskId + ". Its completed? " + isCompleted);
       await checkTaskCompletedId(taskId, isCompleted)
     } catch (error) {
       console.error(error)

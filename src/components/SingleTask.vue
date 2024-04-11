@@ -2,7 +2,6 @@
 import Actions from './Actions.vue'
 import { useTasksStore } from '@/stores/tasksStore'
 
-
 defineProps({
   task: Object
 })

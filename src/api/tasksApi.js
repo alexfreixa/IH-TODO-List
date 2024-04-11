@@ -1,5 +1,7 @@
 import { supabase } from '@/api/supabase'
 
+const TABLE_NAME = 'tasks';
+
 export const fetchAllTasks = async () => {
   const { data, error } = await supabase.from('tasks').select('*').order('id')
 
@@ -9,7 +11,14 @@ export const fetchAllTasks = async () => {
   return data;
 }
 
-const TABLE_NAME = 'tasks';
+export const fetchTaskById = async (taskId) => {
+  const { data, error } = await supabase.from('tasks').select('*').eq('id', taskId).single()
+
+  if (error) {
+    throw new Error(error.message)
+  }
+  return data;
+}
 
 export const createTask = async (task) => {
   const { error } = await supabase
