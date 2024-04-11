@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { fetchAllTasks, createTask, deleteTaskId } from '@/api/tasksApi'
+import { fetchAllTasks, createTask, deleteTaskId, checkTaskCompletedId } from '@/api/tasksApi'
 
 export const useTasksStore = defineStore('tasks', () => {
   // State
@@ -29,8 +29,16 @@ export const useTasksStore = defineStore('tasks', () => {
 
   async function deleteTask(taskId){
     try {
-      console.log("Now deleting:" + taskId);
       await deleteTaskId(taskId)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function checkTaskCompleted(taskId, isCompleted){
+    try {
+      console.log("Now checking:" + taskId + ". Its completed? " + isCompleted);
+      await checkTaskCompletedId(taskId, isCompleted)
     } catch (error) {
       console.error(error)
     }
@@ -43,6 +51,7 @@ export const useTasksStore = defineStore('tasks', () => {
     // Actions
     fetchTasks,
     createNewTask,
-    deleteTask
+    deleteTask,
+    checkTaskCompleted
   }
 })

@@ -1,7 +1,7 @@
 import { supabase } from '@/api/supabase'
 
 export const fetchAllTasks = async () => {
-  const { data, error } = await supabase.from('tasks').select('*')
+  const { data, error } = await supabase.from('tasks').select('*').order('id')
 
   if (error) {
     throw new Error(error.message)
@@ -34,11 +34,12 @@ export const deleteTaskId = async (taskId) => {
   return true
 }
 
-export const updateCompleted = async (taskId) => {
+export const checkTaskCompletedId = async (taskId, isCompleted) => {
+  console.log(isCompleted);
   const { error } = await supabase
   .from(TABLE_NAME)
-  .update({ is_complete: 'Australia' })
-  .eq('id', 1)
+  .update({ is_complete: !isCompleted })
+  .eq('id', taskId)
   if (error) {
     throw new Error(error.message)
   }
