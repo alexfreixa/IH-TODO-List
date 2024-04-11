@@ -39,3 +39,7 @@ input {
 }
 
 
+div#id {
+  text-align: right;
+  min-width: 45px;
+}

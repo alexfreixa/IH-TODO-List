@@ -40,6 +40,21 @@ onMounted(() => {
     <div class="flex justify-center flex-col">
       <h1 class="text-xl m-auto">My personal Task List</h1>
       <br />
+
+      <div id="item" class="flex text-black bg-white px-4 py-2 border-b border-black w-3/4 m-auto">
+        <div class="flex justify-start w-4/5">
+          <div id="id" class="">
+            <span><b>Task</b> </span>
+          </div>
+        </div>
+
+        <div class="flex justify-end w-1/5">
+          <div id="completion">
+            <span><b>Actions</b></span>
+          </div>
+        </div>
+      </div>
+
       <div id="tasks-list">
         <SingleTask v-for="task in tasks" :task="task" />
       </div>

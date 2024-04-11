@@ -21,3 +21,27 @@ export const createTask = async (task) => {
 
   return true
 }
+
+export const deleteTaskId = async (taskId) => {
+  const { error } = await supabase
+  .from(TABLE_NAME)
+  .delete()
+  .eq('id', taskId)
+  if (error) {
+    throw new Error(error.message)
+  }
+
+  return true
+}
+
+export const updateCompleted = async (taskId) => {
+  const { error } = await supabase
+  .from(TABLE_NAME)
+  .update({ is_complete: 'Australia' })
+  .eq('id', 1)
+  if (error) {
+    throw new Error(error.message)
+  }
+
+  return true
+}

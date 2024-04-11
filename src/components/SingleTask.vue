@@ -8,19 +8,22 @@ defineProps({
 
 <template>
   <div id="item" class="flex text-black bg-white px-4 py-2 border-b border-black w-3/4 m-auto">
-    <div id="id" class="">
-      <span>#{{ task.id }} - </span>
+    <div class="flex justify-start w-4/5 items-center flex-nowrap">
+      <div id="id" class="">
+        <span
+          ><b>#{{ task.id }}</b> -
+        </span>
+      </div>
+
+      <div id="title">
+        <span>&nbsp;{{ task.title }}</span>
+      </div>
     </div>
 
-    <div id="title">
-      <span> {{ task.title }}</span>
-    </div>
-
-    <div id="completion">
-      <span>{{ task.complete }}</span>
-    </div>
-    <div id="actions">
-      <Actions></Actions>
+    <div class="flex justify-end align-middle w-1/5">
+      <div id="actions" class="flex">
+        <Actions :taskId="task.id"></Actions>
+      </div>
     </div>
   </div>
 </template>

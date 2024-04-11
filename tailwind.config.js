@@ -9,6 +9,10 @@ export default {
     colors: {
       primary: '#2a206a',
       secondary: '#00e4a1',
+      red: '#E11D48',
+      blue: '#05C1FF',
+      green: '#6aa84f',
+      gray: '#cacaca'
     }
   },
   plugins: [],
