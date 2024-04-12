@@ -15,23 +15,6 @@ onMounted(() => {
   tasksStore.fetchTasks()
 })
 
-/*const taskList = ref([
-    {
-		id : 0,
-		title: "Buscar proveedores de refrescos nuevos.",
-		is_complete: false,
-    },
-    {
-		id : 1,
-		title: "Hacer las pruebas de sonido.",
-		is_complete: false,
-    },
-	{
-		id : 2,
-		title: "Imprimir contratos de los camareros",
-		is_complete: true,
-    },
-]);*/
 </script>
 
 <template>

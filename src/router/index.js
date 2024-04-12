@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import EditView from '@/views/EditView.vue'
+import SignInView from '@/views/SignInView.vue'
+import AboutView from '@/views/AboutView.vue'
 
 import { useUserStore } from '@/stores/userStore'
 
@@ -14,17 +17,17 @@ const router = createRouter({
     {
       path: '/signin',
       name: 'signin',
-      component: () => import('@/views/SignInView.vue')
+      component: SignInView
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('@/views/AboutView.vue')
+      component: AboutView
     },
     {
       path: '/edit/:taskId',
       name: 'edit',
-      component: () => import('@/views/EditView.vue')
+      component: EditView
     }
   ]
 })
