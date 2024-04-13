@@ -20,11 +20,6 @@ const router = createRouter({
       component: SignInView
     },
     {
-      path: '/about',
-      name: 'about',
-      component: AboutView
-    },
-    {
       path: '/edit/:taskId',
       name: 'edit',
       component: EditView
