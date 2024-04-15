@@ -14,19 +14,25 @@ const signIn = () => {
 
 <template>
 	<main>
-		<h1>Sign In View!</h1>
-		<label>
-			User:
-			<input type="text" v-model="user" />
-		</label>
-		<label>
-			Password:
-			<input type="password" v-model="password" />
-		</label>
+		<h1 class="text-xl m-auto font-black text-center pb-6">Sign in!</h1>
+		<div class="bg-white text-black p-4 rounded-md max-w-sm text-center">
+		
+			<div class="flex [&>*>*>input]:bg-lightgray [&>*>*>input]:w-full [&>*>*>input]:p-2 [&>*>*>input]:rounded-md  [&>div]:pb-4 flex-wrap">
+				<div class="w-full">
+					<label>
+						<input placeholder="User" type="text" v-model="user" />
+					</label>
+				</div>
+				<div class="w-full">
+					<label>
+						<input  placeholder="Password" type="password" v-model="password" />
+					</label>
+				</div>
+			</div>
 
-		<button @click="signIn">Sign In</button>
+			<button class="bg-blue px-6 py-3 text-white" @click="signIn">Sign In</button>
+		</div>
 	</main>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

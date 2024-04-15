@@ -12,7 +12,10 @@ export default {
       red: '#E11D48',
       blue: '#05C1FF',
       green: '#6aa84f',
-      gray: '#cacaca'
+      gray: '#cacaca',
+      lightgray: '#f4f4f4',
+      white: '#fff',
+      black: '#2f2f2f'
     }
   },
   plugins: [],
