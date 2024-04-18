@@ -9,16 +9,16 @@ const userStore = useUserStore()
 
 const user = ref('')
 const password = ref('')
-const errorLogin = userStore.getErrorLogin;
+const registerError = userStore.getErrorLogin;
 
 
 const errorSignUp = async () => {
 
 	try {
-		await userStore.signIn(user.value, password.value);
+		await userStore.signUp(user.value, password.value);
 	} catch (err) {
 		console.error(err);
-		errorLogin.value = err
+		registerError.value = err
 	}
 
 }
@@ -27,8 +27,8 @@ const errorSignUp = async () => {
 
 <template>
 	<main>
-		<h1 class="text-xl m-auto font-black text-center pb-6">Register now!</h1>
-		<p class="text-sm m-auto text-center">To-do lists are really useful, make your life easier!</p>
+		<h1 class="text-xl m-auto font-black text-center pb-4">Register now!</h1>
+		<p class="text-sm m-auto text-center pb-4">To-do lists are really useful, make your life easier!</p>
 		<div class="bg-white text-black p-4 rounded-md max-w-sm text-center m-auto">
 
 			<div
@@ -47,7 +47,7 @@ const errorSignUp = async () => {
 
 			<button class="bg-blue px-6 py-3 text-white" @click="signUp">Sign up</button>
 			<p class="pt-4"><b>You're registered?</b> <RouterLink :to="{ name: 'signin'}">Log in now!</RouterLink></p>
-			<p v-if="errorSignUp()" class="text-red pt-4">{{ errorLogin() }}</p>
+			<p v-if="errorSignUp()" class="text-red pt-4">{{ errorSignUp() }}</p>
 		</div>
 	</main>
 </template>

@@ -14,6 +14,9 @@ const errorLogin = userStore.getErrorLogin;
 const signIn = async () => {
 	try {
 		await userStore.signIn(user.value, password.value);
+		router.push({
+        name: 'home',
+      });
 	} catch (err) {
 		console.error(err);
 		errorLogin.value = err

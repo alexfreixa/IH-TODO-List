@@ -1,8 +1,26 @@
+<script setup>
+
+import { useUserStore } from '@/stores/userStore'
+import { useRouter } from 'vue-router'
+
+const userStore = useUserStore()
+const router = useRouter()
+
+const signOut = async () => {
+	try {
+		await userStore.signOut();
+		router.push({ name: 'signin' });
+	} catch (error) {
+		console.error('Warning, you couldnt logout!', error);
+	}
+};
+</script>
 <template>
 	<header>
 		<div class="wrapper">
 			<nav>
 				<RouterLink to="/">Home</RouterLink>
+				<button @click="signOut">Sign out.</button>
 			</nav>
 		</div>
 	</header>
@@ -11,7 +29,6 @@
 </template>
 
 <style scoped>
-
 header {
 	line-height: 1.5;
 	max-height: 100vh;
