@@ -50,8 +50,8 @@ export const useUserStore = defineStore('user', () => {
     // State
     user,
     signIn,
-    getErrorLogin,
     // Getters
+    getErrorLogin,
     // Actions
     fetchUser,
     signUp,

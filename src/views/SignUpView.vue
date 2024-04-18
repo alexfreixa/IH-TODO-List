@@ -11,39 +11,43 @@ const user = ref('')
 const password = ref('')
 const errorLogin = userStore.getErrorLogin;
 
-const signIn = async () => {
+
+const errorSignUp = async () => {
+
 	try {
 		await userStore.signIn(user.value, password.value);
 	} catch (err) {
 		console.error(err);
 		errorLogin.value = err
 	}
+
 }
 
 </script>
 
 <template>
 	<main>
-		<h1 class="text-xl m-auto font-black text-center pb-6">Sign in!</h1>
+		<h1 class="text-xl m-auto font-black text-center pb-6">Register now!</h1>
+		<p class="text-sm m-auto text-center">To-do lists are really useful, make your life easier!</p>
 		<div class="bg-white text-black p-4 rounded-md max-w-sm text-center m-auto">
 
 			<div
 				class="flex [&>*>*>input]:bg-lightgray [&>*>*>input]:w-full [&>*>*>input]:p-2 [&>*>*>input]:rounded-md  [&>div]:pb-4 flex-wrap">
 				<div class="w-full">
 					<label>
-						<input placeholder="User" type="text" v-model="user" />
+						<input placeholder="Your new user" type="text" v-model="user" />
 					</label>
 				</div>
 				<div class="w-full">
 					<label>
-						<input placeholder="Password" type="password" v-model="password" />
+						<input placeholder="Your secret password" type="password" v-model="password" />
 					</label>
 				</div>
 			</div>
 
-			<button class="bg-blue px-6 py-3 text-white" @click="signIn">Sign In</button>
-			<p class="pt-4"><b>You're not registered?</b> <RouterLink :to="{ name: 'signup'}">Sign up!</RouterLink></p>
-			<p v-if="errorLogin()" class="text-red pt-4">{{ errorLogin() }}</p>
+			<button class="bg-blue px-6 py-3 text-white" @click="signUp">Sign up</button>
+			<p class="pt-4"><b>You're registered?</b> <RouterLink :to="{ name: 'signin'}">Log in now!</RouterLink></p>
+			<p v-if="errorSignUp()" class="text-red pt-4">{{ errorLogin() }}</p>
 		</div>
 	</main>
 </template>
