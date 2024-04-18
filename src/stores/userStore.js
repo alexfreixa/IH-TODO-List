@@ -2,10 +2,11 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { fetchActualUser, createNewUser, logIn } from '@/api/userApi'
 
+
 export const useUserStore = defineStore('user', () => {
   // State
   const user = ref(undefined)
-
+  const errorLogin = ref('');
   // Getters
 
   // Actions
@@ -31,14 +32,25 @@ export const useUserStore = defineStore('user', () => {
   async function signIn(email, password) {
     try {
       user.value = await logIn(email, password)
+      errorLogin.value = '';
+      router.push({
+        name: 'home',
+      });
     } catch (error) {
-      console.error(error)
+      console.error(error);
+      errorLogin.value = 'User or password incorrect.';
     }
+  }
+
+  function getErrorLogin() {
+    return errorLogin.value;
   }
 
   return {
     // State
     user,
+    signIn,
+    getErrorLogin,
     // Getters
     // Actions
     fetchUser,
