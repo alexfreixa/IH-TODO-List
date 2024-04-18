@@ -24,10 +24,10 @@ export const useUserStore = defineStore('user', () => {
       }
     }
   }
-
+  
   async function signUp(email, password) {
     try {
-      user.value = await createNewUser(email, password)
+      await createNewUser(email, password)
     } catch (error) {
       console.error(error)
     }
@@ -37,6 +37,7 @@ export const useUserStore = defineStore('user', () => {
     try {
       user.value = await logIn(email, password)
       errorLogin.value = '';
+      
     } catch (error) {
       console.error(error);
       errorLogin.value = 'User or password incorrect.';
@@ -58,13 +59,12 @@ export const useUserStore = defineStore('user', () => {
   return {
     // State
     user,
-    signIn,
     // Getters
     getErrorLogin,
     // Actions
     fetchUser,
     signUp,
-    signIn,
-    signOut
+    signOut,
+    signUp
   }
 })

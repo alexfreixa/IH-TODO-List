@@ -11,16 +11,16 @@ const user = ref('')
 const password = ref('')
 const registerError = userStore.getErrorLogin;
 
-
-const errorSignUp = async () => {
-
+const signUp = async () => {
 	try {
-		await userStore.signUp(user.value, password.value);
+		await userStore.signUp(user.value, password.value)
+		router.push({
+			name: 'home',
+		})
 	} catch (err) {
 		console.error(err);
 		registerError.value = err
 	}
-
 }
 
 </script>
@@ -47,7 +47,6 @@ const errorSignUp = async () => {
 
 			<button class="bg-blue px-6 py-3 text-white" @click="signUp">Sign up</button>
 			<p class="pt-4"><b>You're registered?</b> <RouterLink :to="{ name: 'signin'}">Log in now!</RouterLink></p>
-			<p v-if="errorSignUp()" class="text-red pt-4">{{ errorSignUp() }}</p>
 		</div>
 	</main>
 </template>
