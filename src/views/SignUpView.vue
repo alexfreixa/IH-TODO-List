@@ -14,9 +14,7 @@ const registerError = userStore.getErrorLogin;
 const signUp = async () => {
 	try {
 		await userStore.signUp(user.value, password.value)
-		router.push({
-			name: 'home',
-		})
+		router.push({ name: '/confirm' }) 
 	} catch (err) {
 		console.error(err);
 		registerError.value = err
@@ -46,7 +44,7 @@ const signUp = async () => {
 			</div>
 
 			<button class="bg-blue px-6 py-3 text-white" @click="signUp">Sign up</button>
-			<p class="pt-4"><b>You're registered?</b> <RouterLink :to="{ name: 'signin'}">Log in now!</RouterLink></p>
+			<p class="pt-4"><b>You're registered?</b> <RouterLink :to="{ name: 'signin'}"><u>Log in now!</u></RouterLink></p>
 		</div>
 	</main>
 </template>

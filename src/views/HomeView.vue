@@ -2,11 +2,24 @@
 import { useTasksStore } from '@/stores/tasksStore'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
-import { ref } from 'vue'
+import { useUserStore } from '@/stores/userStore'
+import { useRouter } from 'vue-router'
 
 //import SingleTask from '@/components/SingleTask.vue';
 import SingleTask from '../components/SingleTask.vue'
 import AddTask from '../components/AddTask.vue'
+
+const userStore = useUserStore()
+const router = useRouter()
+
+const signOut = async () => {
+	try {
+		await userStore.signOut();
+		router.push({ name: 'signin' });
+	} catch (error) {
+		console.error('Warning, you couldnt logout!', error);
+	}
+};
 
 const tasksStore = useTasksStore()
 const { tasks } = storeToRefs(tasksStore)
@@ -20,7 +33,7 @@ onMounted(() => {
 <template>
   <main class="w-full">
     <br />
-    <h1 class="text-xl m-auto font-black text-center pb-6">To-do</h1>
+    <h1 class="text-xl m-auto font-black text-center pb-6">Your personal to-do list!</h1>
     <div class="flex justify-center flex-col m-auto w-3/4 bg-white text-black p-6 rounded-lg max-w-screen-lg">
       
       <br />
@@ -53,6 +66,11 @@ onMounted(() => {
 
     <AddTask></AddTask>
   </main>
+  <div id="nav-wrapper" class="wrapper">
+		<nav>
+			<button @click="signOut">Sign out.</button>
+		</nav>
+	</div>
 </template>
 
 <style scoped></style>
