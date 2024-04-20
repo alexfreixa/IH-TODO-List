@@ -63,6 +63,7 @@ export const useUserStore = defineStore('user', () => {
     getErrorLogin,
     // Actions
     fetchUser,
+    signIn,
     signUp,
     signOut,
     signUp
