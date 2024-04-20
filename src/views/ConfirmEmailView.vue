@@ -1,16 +1,6 @@
 <script setup>
-import { ref } from 'vue'
-import { useUserStore } from '@/stores/userStore'
-import { useRouter } from 'vue-router'
+
 import { RouterLink } from 'vue-router';
-
-const router = useRouter()
-const userStore = useUserStore()
-
-const user = ref('')
-const password = ref('')
-const errorLogin = userStore.getErrorLogin;
-
 
 </script>
 
