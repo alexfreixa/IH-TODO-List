@@ -19,10 +19,10 @@ export const useTasksStore = defineStore('tasks', () => {
   // Actions
 
   //Fetch All Tasks
-  async function fetchTasks() {
+  async function fetchTasks(userId) {
     try {
-      const data = await fetchAllTasks()
-      tasks.value = data
+      const data = await fetchAllTasks(userId)
+      tasks.value = data;
     } catch (error) {
       console.error(error)
     }
@@ -33,8 +33,6 @@ export const useTasksStore = defineStore('tasks', () => {
     try {
       const data = await fetchWithTaskId(id)
       task.value = data
-
-      console.log(data)
     } catch (error) {
       console.error(error)
     }
@@ -42,7 +40,6 @@ export const useTasksStore = defineStore('tasks', () => {
 
   async function createNewTask(task) {
     try {
-      console.log(task)
       await createTask(task)
     } catch (error) {
       console.error(error)
@@ -51,7 +48,6 @@ export const useTasksStore = defineStore('tasks', () => {
 
   async function updateTask(id, title) {
     try {
-      console.log(id + ' - ' + title)
       await updateTaskTitle(id, title)
     } catch (error) {
       console.error(error)

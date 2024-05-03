@@ -2,8 +2,8 @@ import { supabase } from '@/api/supabase'
 
 const TABLE_NAME = 'tasks'
 
-export const fetchAllTasks = async () => {
-  const { data, error } = await supabase.from('tasks').select('*').order('id')
+export const fetchAllTasks = async (userId) => {
+  const { data, error } = await supabase.from('tasks').select('*').eq('user_id', userId).order('id')
 
   if (error) {
     throw new Error(error.message)
@@ -30,7 +30,7 @@ export const fetchWithTaskId = async (taskId) => {
 }
 
 export const createTask = async (task) => {
-  const { error } = await supabase.from(TABLE_NAME).insert(task)
+  const { error } = await supabase.from(TABLE_NAME).insert(task);
   if (error) {
     throw new Error(error.message)
   }

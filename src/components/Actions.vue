@@ -3,7 +3,7 @@ import { useTasksStore } from '@/stores/tasksStore'
 
 const tasksStore = useTasksStore();
 
-const { taskId, isCompleted } = defineProps({
+const { taskId } = defineProps({
     taskId: Number,
     isCompleted: Boolean,
     taskTitle: Text
@@ -17,9 +17,9 @@ const _deleteTask = async (taskId) => {
 </script>
 
 <template>
-    <div class="actions flex flex-row [&>*>i]:text-white">
-        <RouterLink :to="{ name: 'edit', params: { taskId: taskId } }" class="bg-blue px-6 py-3 "><i class="far fa-pencil"></i></RouterLink>
-        <button @click="_deleteTask(taskId)" class="bg-red px-6 py-3"><i class="far fa-trash"></i></button>
+    <div class="actions flex flex-row [&>*>i]:text-white md:align-top items-center">
+        <RouterLink :to="{ name: 'edit', params: { taskId: taskId } }" class="bg-blue px-2 py-1 md:px-6 md:py-3 "><i class="far fa-pencil"></i></RouterLink>
+        <button @click="_deleteTask(taskId)" class="bg-red px-2 py-1 md:px-6 md:py-3"><i class="far fa-trash"></i></button>
     </div>
 </template>
 

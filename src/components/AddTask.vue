@@ -1,21 +1,25 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, defineProps } from 'vue'
 import { useTasksStore } from '@/stores/tasksStore'
 
-const tasksStore = useTasksStore();
+const tasksStore = useTasksStore()
+
+const props = defineProps({
+  userId: Number
+})
 
 const taskTitle = ref('');
 
 const _addTask = async () => {
-    const task = {
-        user_id: '6d30cb8b-3ecf-4174-a1f9-7b071517fa57',
-        title: taskTitle.value,
-        is_complete: false,
-    };
-    await tasksStore.createNewTask(task);
-    tasksStore.fetchTasks();
+  const task = {
+    user_id: props.userId,
+    title: taskTitle.value,
+    is_complete: false,
+  };
+  await tasksStore.createNewTask(task);
+  tasksStore.fetchTasks(props.userId);
+  
 };
-
 </script>
 
 <template>

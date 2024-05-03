@@ -9,8 +9,10 @@ import { useRouter } from 'vue-router'
 import SingleTask from '../components/SingleTask.vue'
 import AddTask from '../components/AddTask.vue'
 
-const userStore = useUserStore()
-const router = useRouter()
+const userStore = useUserStore();
+const router = useRouter();
+
+const userId = userStore.user.id;
 
 const signOut = async () => {
   try {
@@ -25,7 +27,7 @@ const tasksStore = useTasksStore()
 const { tasks } = storeToRefs(tasksStore)
 
 onMounted(() => {
-  tasksStore.fetchTasks()
+  tasksStore.fetchTasks(userId)
 })
 
 </script>
@@ -44,13 +46,13 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="flex justify-center flex-col m-auto w-3/4 bg-white text-black p-6 mt-6 rounded-lg max-w-screen-lg">
+    <div class="flex justify-center flex-col m-auto w-full md:w-3/4 bg-white text-black p-6 mt-6 rounded-lg max-w-screen-lg">
       <br />
 
       <div id="item" class="flex text-black bg-white py-2 border-b border-black">
         <div class="flex justify-start w-4/5">
           <div id="id" class="">
-            <span><b>Task</b> </span>
+            <span><b>Completed</b> </span>
           </div>
         </div>
 
@@ -74,7 +76,7 @@ onMounted(() => {
 
     <div class="text-center pt-5">Total Tasks: {{ tasks.length }}</div>
 
-    <AddTask></AddTask>
+    <AddTask :userId="userId"></AddTask>
   </main>
 </template>
 

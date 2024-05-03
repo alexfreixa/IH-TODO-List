@@ -14,7 +14,7 @@ const registerError = userStore.getErrorLogin;
 const signUp = async () => {
 	try {
 		await userStore.signUp(user.value, password.value)
-		router.push({ name: '/confirm' }) 
+		router.push({ name: 'confirm' }) 
 	} catch (err) {
 		console.error(err);
 		registerError.value = err
