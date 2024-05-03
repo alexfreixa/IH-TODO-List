@@ -1,7 +1,9 @@
 <script setup>
 import { useTasksStore } from '@/stores/tasksStore'
+import { useUserStore } from '@/stores/userStore'
 
 const tasksStore = useTasksStore();
+const userStore = useUserStore();
 
 const { taskId } = defineProps({
     taskId: Number,
@@ -9,9 +11,11 @@ const { taskId } = defineProps({
     taskTitle: Text
 })
 
+const theuserId = userStore.user.id;
+
 const _deleteTask = async (taskId) => {
     await tasksStore.deleteTask(taskId);
-    tasksStore.fetchTasks();
+    tasksStore.fetchTasks(theuserId);
 };
 
 </script>
